@@ -59,14 +59,14 @@ if __name__ == "__main__":
         os.path.dirname(BASE_PATH),
         "data",
         "semi-supervised",
-        "munliv_15.28-17.23.xlsx"
+        "munliv_15.28-17.23_no-duplicates.xlsx"
     )
 
     brexitvote_file = os.path.join(
         os.path.dirname(BASE_PATH),
         "data",
         "semi-supervised",
-        "brexitvote_08.00-13.59.xlsx"
+        "brexitvote_08.00-13.59_no-duplicates.xlsx"
     )
 
     predictions_folder = PREDICTION_DIRECTORY
