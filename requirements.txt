@@ -1,0 +1,16 @@
+pandas==1.3.5
+matplotlib==3.5.1
+nltk==3.6.6
+tensorflow==2.7.0
+scikit-learn
+demoji==1.1.0
+seaborn==0.11.2
+textblob==0.17.1
+flask
+gunicorn
+transformers
+torch
+requests
+tqdm
+scipy
+openpyxl
