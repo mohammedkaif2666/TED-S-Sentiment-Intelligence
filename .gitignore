@@ -234,4 +234,6 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
-/experiments/data_private/
+# /experiments/data_private/
+!/experiments/output/predictions/*.xlsx
+!/static/plots/*.png
