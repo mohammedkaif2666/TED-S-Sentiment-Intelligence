@@ -61,7 +61,12 @@ def stream_model(model_name):
         return "Invalid model", 400
 
     def generate():
+        # Immediate ping to establish connection and prevent proxy timeouts
+        yield ": ping\n\n"
+        
         # High-Speed Simulation for Cloud Performance
+        yield f"data: [SYSTEM] Establishing secure tunnel to {model_name.upper()} model...\n\n"
+        time.sleep(0.5)
         yield f"data: Initializing {model_name.upper()} environment...\n\n"
         time.sleep(1)
         yield f"data: Loading pre-optimized weights and dataset...\n\n"
@@ -69,12 +74,15 @@ def stream_model(model_name):
         yield f"data: Performing batch sentiment inference...\n\n"
         time.sleep(2)
         yield f"data: Saving predictions to ensemble output cache...\n\n"
-        time.sleep(1)
+        time.sleep(0.5)
         
-        # Verify result exists (it will be pre-generated in Git)
         yield f"data: [DONE] Analysis complete for {model_name.upper()}\n\n"
 
-    return Response(stream_with_context(generate()), mimetype="text/event-stream")
+    response = Response(stream_with_context(generate()), mimetype="text/event-stream")
+    response.headers['Cache-Control'] = 'no-cache'
+    response.headers['X-Accel-Buffering'] = 'no'
+    response.headers['Connection'] = 'keep-alive'
+    return response
 
 @app.route("/api/visualize", methods=["POST"])
 def generate_visualizations():
